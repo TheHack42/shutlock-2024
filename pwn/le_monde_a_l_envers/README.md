@@ -248,10 +248,10 @@ gef➤  dereference -l 15 $rsp+(8*14)
 0x00007fffffffdac0│+0x0018: 0x00007fffffffdb60  →  0x00007fffffffdbc0  →  0x0000000000000000	 ← $rbp
 0x00007fffffffdac8│+0x0020: 0x00007ffff7c2a1ca  →  <__libc_start_call_main+007a> mov edi, eax			# <=== __libc_start_call_main address
 0x00007fffffffdad0│+0x0028: 0x00007fffffffdb10  →  0x0000555555557d88  →  0x0000555555555100  →  <__do_global_dtors_aux+0000> endbr64 
-0x00007fffffffdad8│+0x0030: 0x00007fffffffdbe8  →  0x00007fffffffdf50  →  "/home/hack42/kDrive/Documents/Programmations/Hack/[...]"
+0x00007fffffffdad8│+0x0030: 0x00007fffffffdbe8  →  0x00007fffffffdf50  →  "/chall"
 0x00007fffffffdae0│+0x0038: 0x0000000155554040
 0x00007fffffffdae8│+0x0040: 0x0000555555555149  →  <main+0000> push rbp
-0x00007fffffffdaf0│+0x0048: 0x00007fffffffdbe8  →  0x00007fffffffdf50  →  "/home/hack42/kDrive/Documents/Programmations/Hack/[...]"
+0x00007fffffffdaf0│+0x0048: 0x00007fffffffdbe8  →  "/chall"
 0x00007fffffffdaf8│+0x0050: 0xd963159f0e71e790
 0x00007fffffffdb00│+0x0058: 0x0000000000000001
 0x00007fffffffdb08│+0x0060: 0x0000000000000000
