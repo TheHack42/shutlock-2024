@@ -545,3 +545,6 @@ p.interactive()
 - https://libc.rip/
 - https://defuse.ca/online-x86-assembler.htm
 - https://book.hacktricks.xyz/binary-exploitation/rop-return-oriented-programing/ret2lib/rop-leaking-libc-address
+- https://tripoloski1337.github.io/ctf/2021/07/12/bypassing-seccomp-prctl.html
+- https://github.com/david942j/seccomp-tools
+
