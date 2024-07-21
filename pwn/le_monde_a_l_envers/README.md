@@ -166,7 +166,7 @@ Le syscall **open** n'est pas autorisé et est nécessaire pour obtenir un descr
 
 ## ABI x32
 
-Le fait d'autoriser des syscall supérieur ou égal à 0x40000000, il serait théoriquement possible d'appeler des syscall x32 en utilisant des registres x64 via l'ABI x32. Pour cela, il suffit d'ajouter au numéro de syscall la valeur 0x40000000. Par exemple, le syscall open de numéro 2, deviendrait 0x40000002.
+Le fait d'autoriser des appels système supérieurs ou égaux 0x40000000, il serait théoriquement possible d'appeler des syscall x32 en utilisant des registres x64 via l'ABI x32. Pour cela, il suffit d'ajouter au numéro de syscall la valeur 0x40000000. Par exemple, le syscall open de numéro 2, deviendrait 0x40000002.
 
 En revanche, pour utiliser l'ABI x32, le kernel doit être compilé avec l'option "CONFIG_X86_X32". Si ce n'est pas le cas, il n'est donc pas possible d'utiliser l'ABI x32... Et sur le serveur possédant le challenge, l'ABI x32 n'est pas activé.
 
@@ -184,7 +184,7 @@ Il est possible d'appeler des syscall x32 depuis un programme x64 via l'interrup
 | 0x3c | exit      | exit      |
 | 0xe7 | exit_group | exit_group |
 
-Nous constatons qu'en utilisant les syscall x32, il est ainsi possible d'appeler le syscall **open** afin d'obtenir notre descripteur de fichier sur flag.txt. **read** etant disponible en x64, pas besoin d'utiliser les syscall x32.
+Nous constatons qu'en utilisant les syscall x32, il est ainsi possible d'appeler le syscall **open** afin d'obtenir notre descripteur de fichier sur flag.txt. **read** étant disponible en x64, pas besoin d'utiliser les syscall x32.
 
 
 # Etape d'exploitation
@@ -261,11 +261,11 @@ gef➤  dereference -l 15 $rsp+(8*14)
 
 A ce stade, nous avons donc une adresse du binaire, une adresse de la stack et une adresse de la libc. Il est donc possible de connaître quelle libc est utilisée sur le serveur distant :
 - Via https://libc.rip/
-- en clonant le projet https://github.com/niklasb/libc-database
+- En clonant le projet https://github.com/niklasb/libc-database
 
-En revanche, nous devons obligatoirement posséder l'adresse exacte de la fonction `__libc_start_call_main`. Pour cela, il suffit de décrémenter l'adresse leak puis de vérifier si cette dernière match avec une adresse d'une libc... La libc que j'ai utilisé en local, il suffisait de soustraire 0x7a. La libc utilisé à distance n'est certainement pas la même et l'offset de décalage doit légérement être différent.
+En revanche, nous devons obligatoirement posséder l'adresse exacte de la fonction `__libc_start_call_main`. Pour cela, il suffit de décrémenter l'adresse leak puis de vérifier si cette dernière match avec une adresse d'une libc... Avec la libc que j'ai utilisé en local, il suffisait de soustraire 0x7a. La libc utilisé à distance n'est certainement pas la même et l'offset de décalage doit légérement être différent.
 
-Après quelques tests, l'offset de décalage utilisé par la libc remote était 0x80. Via libc-database, nous pouvons retrouver la libc utilisée :
+Après quelques tests, l'offset de décalage utilisé par la libc distante était 0x80. Via libc-database, nous pouvons retrouver la libc utilisée :
 
 ```bash
 ./get ubuntu debian  # Download Ubuntu's and Debian's libc, old default behavior
