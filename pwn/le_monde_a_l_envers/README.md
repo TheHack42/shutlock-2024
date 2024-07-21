@@ -115,10 +115,10 @@ void upside_down_world_enter(void)
 Cette fonction fait :
 - Affiche "UPSIDEDOWNWORLD"
 - Débute une boucle tant que l'utilisateur n'a pas saisi une chaîne de caractères commençant par "B"
- - Affiche "\nWho are you stranger ? >> "
- - Attend une chaîne de caractères de l'utilisateur d'une taille maximale de 1636 caractères et la stocke dans "user_input"
- - Affiche au maximum 100 caractères de la chaîne de caractères saisie par l'utilisateur (buffer user_input)
- - Reboucle à nouveau si le premier caractère saisi par l'utilisateur ne commence pas par "B"
+  - Affiche "\nWho are you stranger ? >> "
+  - Attend une chaîne de caractères de l'utilisateur d'une taille maximale de 1636 caractères et la stocke dans "user_input"
+  - Affiche au maximum 100 caractères de la chaîne de caractères saisie par l'utilisateur (buffer user_input)
+  - Reboucle à nouveau si le premier caractère saisi par l'utilisateur ne commence pas par "B"
 
 Nous pouvons donc constater deux choses :
 - Nous avons un buffer overflow de 1636 octets (écriture dans user_input)
