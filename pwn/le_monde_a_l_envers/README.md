@@ -102,7 +102,7 @@ void upside_down_world_enter(void)
   	// write(stdout, "\nWho are you stranger ? >> ", 27)
     syscall(); // eax=0x1, edi=0x1, rsi=msg, edx=0x1b
 
-    // read(stdout, user_input, 1636)
+    // read(stdin, user_input, 1636)
     syscall(); // eax=0x0, edi=0x0, rsi=user_input, edx=0x664
 
     // write(stdout, user_input, 100)
